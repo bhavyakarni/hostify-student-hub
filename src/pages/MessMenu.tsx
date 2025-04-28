@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -29,7 +28,7 @@ type DayMenu = {
 };
 
 const MessMenu = () => {
-  // Mock data for mess menu
+  // Complete week menu data
   const weekMenu: DayMenu[] = [
     {
       day: "Monday",
@@ -145,6 +144,158 @@ const MessMenu = () => {
         },
       },
     },
+    {
+      day: "Thursday",
+      date: "April 13",
+      meals: {
+        breakfast: {
+          time: "7:00 AM - 9:00 AM",
+          items: [
+            { name: "Aloo Paratha", type: "veg" },
+            { name: "Curd", type: "veg" },
+            { name: "Omelette", type: "non-veg" },
+            { name: "Mixed Fruits", type: "veg" },
+            { name: "Tea/Coffee", type: "veg" },
+          ],
+        },
+        lunch: {
+          time: "12:30 PM - 2:30 PM",
+          items: [
+            { name: "Plain Rice", type: "veg" },
+            { name: "Dal Makhani", type: "veg" },
+            { name: "Cauliflower Curry", type: "veg" },
+            { name: "Mutton Curry", type: "non-veg", description: "Tender mutton pieces" },
+            { name: "Onion Salad", type: "veg" },
+            { name: "Roasted Papad", type: "veg" },
+          ],
+        },
+        dinner: {
+          time: "7:30 PM - 9:30 PM",
+          items: [
+            { name: "Butter Naan", type: "veg" },
+            { name: "Kadhai Paneer", type: "veg" },
+            { name: "Black Chana", type: "veg" },
+            { name: "Veg Pulao", type: "veg" },
+            { name: "Mint Raita", type: "veg" },
+            { name: "Rasmalai", type: "veg", description: "Special dessert" },
+          ],
+        },
+      },
+    },
+    {
+      day: "Friday",
+      date: "April 14",
+      meals: {
+        breakfast: {
+          time: "7:00 AM - 9:00 AM",
+          items: [
+            { name: "Upma", type: "veg" },
+            { name: "Coconut Chutney", type: "veg" },
+            { name: "Boiled Eggs", type: "non-veg" },
+            { name: "Seasonal Fruits", type: "veg" },
+            { name: "Tea/Coffee", type: "veg" },
+          ],
+        },
+        lunch: {
+          time: "12:30 PM - 2:30 PM",
+          items: [
+            { name: "Lemon Rice", type: "veg" },
+            { name: "Sambhar", type: "veg" },
+            { name: "Bhindi Masala", type: "veg" },
+            { name: "Fish Fry", type: "non-veg" },
+            { name: "Cucumber Salad", type: "veg" },
+            { name: "Curd", type: "veg" },
+          ],
+        },
+        dinner: {
+          time: "7:30 PM - 9:30 PM",
+          items: [
+            { name: "Tawa Roti", type: "veg" },
+            { name: "Matar Paneer", type: "veg" },
+            { name: "Yellow Dal", type: "veg" },
+            { name: "Steamed Rice", type: "veg" },
+            { name: "Curd", type: "veg" },
+            { name: "Gajar Halwa", type: "veg", description: "Carrot dessert" },
+          ],
+        },
+      },
+    },
+    {
+      day: "Saturday",
+      date: "April 15",
+      meals: {
+        breakfast: {
+          time: "7:00 AM - 9:00 AM",
+          items: [
+            { name: "Chole Bhature", type: "veg", description: "Special weekend breakfast" },
+            { name: "Pickle", type: "veg" },
+            { name: "Scrambled Eggs", type: "non-veg" },
+            { name: "Banana", type: "veg" },
+            { name: "Tea/Coffee", type: "veg" },
+          ],
+        },
+        lunch: {
+          time: "12:30 PM - 2:30 PM",
+          items: [
+            { name: "Veg Biryani", type: "veg", description: "Weekend special" },
+            { name: "Raita", type: "veg" },
+            { name: "Soya Chunks Curry", type: "veg" },
+            { name: "Chicken Biryani", type: "non-veg", description: "Weekend special" },
+            { name: "Mixed Salad", type: "veg" },
+            { name: "Papad", type: "veg" },
+          ],
+        },
+        dinner: {
+          time: "7:30 PM - 9:30 PM",
+          items: [
+            { name: "Butter Roti", type: "veg" },
+            { name: "Shahi Paneer", type: "veg", description: "Paneer in rich gravy" },
+            { name: "Chana Masala", type: "veg" },
+            { name: "Jeera Rice", type: "veg" },
+            { name: "Mixed Raita", type: "veg" },
+            { name: "Kheer", type: "veg", description: "Rice pudding" },
+          ],
+        },
+      },
+    },
+    {
+      day: "Sunday",
+      date: "April 16",
+      meals: {
+        breakfast: {
+          time: "8:00 AM - 10:00 AM",
+          items: [
+            { name: "Puri Sabji", type: "veg", description: "Special Sunday breakfast" },
+            { name: "Omelette Station", type: "non-veg" },
+            { name: "Cornflakes", type: "veg" },
+            { name: "Fresh Fruit Platter", type: "veg", description: "Variety of fruits" },
+            { name: "Tea/Coffee", type: "veg" },
+          ],
+        },
+        lunch: {
+          time: "12:30 PM - 2:30 PM",
+          items: [
+            { name: "Butter Naan", type: "veg" },
+            { name: "Paneer Butter Masala", type: "veg" },
+            { name: "Mixed Veg Curry", type: "veg" },
+            { name: "Butter Chicken", type: "non-veg", description: "Sunday special" },
+            { name: "Veg Pulao", type: "veg" },
+            { name: "Sweet Lassi", type: "veg", description: "Special drink" },
+          ],
+        },
+        dinner: {
+          time: "7:30 PM - 9:30 PM",
+          items: [
+            { name: "Tandoori Roti", type: "veg" },
+            { name: "Mushroom Masala", type: "veg", description: "Special item" },
+            { name: "Dal Fry", type: "veg" },
+            { name: "Vegetable Fried Rice", type: "veg" },
+            { name: "Boondi Raita", type: "veg" },
+            { name: "Ice Cream", type: "veg", description: "Multiple flavors" },
+          ],
+        },
+      },
+    },
   ];
 
   const [currentTab, setCurrentTab] = useState<string>("Monday");
@@ -164,7 +315,7 @@ const MessMenu = () => {
         onValueChange={setCurrentTab}
         className="w-full"
       >
-        <TabsList className="grid grid-cols-3 md:grid-cols-7 mb-4">
+        <TabsList className="grid grid-cols-4 md:grid-cols-7 mb-4">
           {weekMenu.map((day) => (
             <TabsTrigger key={day.day} value={day.day}>
               <span className="hidden md:inline">{day.day}</span>

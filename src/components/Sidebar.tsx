@@ -88,13 +88,7 @@ export function Sidebar({ className }: SidebarProps) {
 
         <div className="absolute bottom-4 left-0 right-0 px-4">
           <div className="space-y-2">
-            <Link
-              to="/settings"
-              className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sidebar-foreground transition-colors hover:bg-sidebar-accent"
-            >
-              <Settings className="h-5 w-5" />
-              <span>Settings</span>
-            </Link>
+        
             <Link
               to="/"
               className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sidebar-foreground transition-colors hover:bg-sidebar-accent hover:text-red-400"

@@ -1,18 +1,47 @@
-
 import { Layout } from "@/components/Layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { User, BellRing, UtensilsCrossed, Calendar, MessageSquare, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { User, BellRing, UtensilsCrossed, Calendar, MessageSquare, ArrowRight, LogOut } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+// User data type
+type UserData = {
+  name: string;
+  email: string;
+  id: string;
+  hostel: string;
+  room: string;
+  joinDate: string;
+};
 
 const Dashboard = () => {
-  // Mock data for the dashboard
-  const studentInfo = {
-    name: "Alex Johnson",
-    id: "STU2023145",
-    hostel: "Block C",
-    room: "C-304",
-    joinDate: "15 Aug 2023",
+  const navigate = useNavigate();
+  const [studentInfo, setStudentInfo] = useState<UserData>({
+    name: "User",
+    email: "",
+    id: "",
+    hostel: "",
+    room: "",
+    joinDate: "",
+  });
+
+  useEffect(() => {
+    // Get user data from localStorage
+    const userDataJson = localStorage.getItem('userData');
+    
+    if (userDataJson) {
+      setStudentInfo(JSON.parse(userDataJson));
+    } else {
+      // Redirect to login if no user data found
+      navigate("/");
+    }
+  }, [navigate]);
+
+  const handleLogout = () => {
+    // Remove user data from localStorage
+    localStorage.removeItem('userData');
+    navigate("/");
   };
 
   const notifications = [
@@ -23,9 +52,14 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold">Welcome back, {studentInfo.name}</h1>
-        <p className="text-gray-600">Here's what's happening in your hostel today</p>
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h1 className="text-3xl font-bold">Welcome back, {studentInfo.name}</h1>
+          <p className="text-gray-600">Here's what's happening in your hostel today</p>
+        </div>
+        <Button variant="outline" onClick={handleLogout} className="flex items-center">
+          <LogOut className="mr-2 h-4 w-4" /> Logout
+        </Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">

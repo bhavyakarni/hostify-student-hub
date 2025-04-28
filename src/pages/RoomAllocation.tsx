@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -18,16 +17,43 @@ type Room = {
   amenities: string[];
 };
 
+type UserData = {
+  name: string;
+  email: string;
+  createdAt: string;
+};
+
 const RoomAllocation = () => {
+  const [userData, setUserData] = useState<UserData | null>(null);
+  
+  // Fetch user data from localStorage when component mounts
+  useEffect(() => {
+    const userDataJson = localStorage.getItem('userData');
+    if (userDataJson) {
+      const parsedUserData = JSON.parse(userDataJson);
+      setUserData(parsedUserData);
+    }
+  }, []);
+  
   // Mock data for room allocation
-  const yourRoom = {
+  const [yourRoom, setYourRoom] = useState({
     block: "C",
     roomNumber: "C-304",
     type: "Double Sharing",
     occupants: ["Alex Johnson", "Sam Wilson"],
     since: "15 Aug 2023",
     amenities: ["Wi-Fi", "Attached Bathroom", "Study Table", "Cupboard"],
-  };
+  });
+  
+  // Update the occupants when user data is loaded
+  useEffect(() => {
+    if (userData) {
+      setYourRoom(prev => ({
+        ...prev,
+        occupants: [userData.name, "Phani"], // Keep the roommate, replace first occupant with current user
+      }));
+    }
+  }, [userData]);
   
   const [rooms, setRooms] = useState<Room[]>([
     {
