@@ -19,7 +19,6 @@ type Meal = {
 
 type DayMenu = {
   day: string;
-  date: string;
   meals: {
     breakfast: Meal;
     lunch: Meal;
@@ -32,7 +31,6 @@ const MessMenu = () => {
   const weekMenu: DayMenu[] = [
     {
       day: "Monday",
-      date: "April 10",
       meals: {
         breakfast: {
           time: "7:00 AM - 9:00 AM",
@@ -70,7 +68,6 @@ const MessMenu = () => {
     },
     {
       day: "Tuesday",
-      date: "April 11",
       meals: {
         breakfast: {
           time: "7:00 AM - 9:00 AM",
@@ -108,7 +105,6 @@ const MessMenu = () => {
     },
     {
       day: "Wednesday",
-      date: "April 12",
       meals: {
         breakfast: {
           time: "7:00 AM - 9:00 AM",
@@ -146,7 +142,6 @@ const MessMenu = () => {
     },
     {
       day: "Thursday",
-      date: "April 13",
       meals: {
         breakfast: {
           time: "7:00 AM - 9:00 AM",
@@ -184,7 +179,6 @@ const MessMenu = () => {
     },
     {
       day: "Friday",
-      date: "April 14",
       meals: {
         breakfast: {
           time: "7:00 AM - 9:00 AM",
@@ -222,7 +216,6 @@ const MessMenu = () => {
     },
     {
       day: "Saturday",
-      date: "April 15",
       meals: {
         breakfast: {
           time: "7:00 AM - 9:00 AM",
@@ -260,7 +253,6 @@ const MessMenu = () => {
     },
     {
       day: "Sunday",
-      date: "April 16",
       meals: {
         breakfast: {
           time: "8:00 AM - 10:00 AM",
@@ -338,7 +330,7 @@ const MessMenu = () => {
                       </CardTitle>
                       <CardDescription>{day.meals.breakfast.time}</CardDescription>
                     </div>
-                    <Badge>{day.day}, {day.date}</Badge>
+                    <Badge>{day.day}</Badge>
                   </div>
                 </CardHeader>
                 <CardContent>
